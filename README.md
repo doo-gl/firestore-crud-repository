@@ -666,7 +666,18 @@ This can be saved and used for a follow invocation of the iterator to start from
 The `finished` communicates whether the iterator got to the end of it's results.
 
 
+### Iterate Batch: `async iterateBatch(entityBatchConsumer:(entities:Array<T>) => Promise<boolean|void>):Promise<IteratorResult>`
 
+The `iterateBatch()` method exposes each batch the iterator processes to give the caller the option to iterate through the batch manually.
+
+This can be valuable if there are relationships between rows which require specific logic to respect as iteration occurs.
+
+The method takes an entity batch consumer function, this function will be invoked with each batch of entities.
+Once the entity batch consumer has finished processing, a new batch will be retrieved from the database and the consumer will be invoked again.
+
+The entity batch consumer can return a `boolean`, if `true` is returned from the consumer, the iteration will end without further processing.
+
+The method returns an `IteratorResult` which is identical to the one returned from the `iterate()` method.
 
 
 

@@ -4,6 +4,8 @@
   "description": "A wrapper around the Firestore Node client that exposes a series of basic CRUD operations to make Firestore easier to work with.",
   "keywords": [
     "firestore",
+    "firebase",
+    "nosql",
     "node",
     "database",
     "repository",

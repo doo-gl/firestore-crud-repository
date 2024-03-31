@@ -100,7 +100,7 @@ Note: Both Creates & Updates are counted as "Writes" by Firestore, it does not d
 
 The function is passed an instance of `RepositoryOperationStats`, which has the following definition:
 ```ts
-export interface RepositoryOperationStats {
+ interface RepositoryOperationStats {
   collectionName:string,
   numberOfReads?:number,
   numberOfWrites?:number,
@@ -257,7 +257,7 @@ There are 2 parameters to the function:
 
 The `Query<T>` object has the following definition:
 ```ts
-export interface Query<T> {
+interface Query<T> {
   field:Extract<keyof T, string>|string,
   operation:WhereFilterOp,
   value:any,
@@ -268,7 +268,7 @@ It is also allowed to be any string for matching deeply nested fields or edge ca
 
 The `operation` is the `WhereFilterOp` defined by `Firestore`, it has the following definition:
 ```ts
-export type WhereFilterOp =
+type WhereFilterOp =
     | '<'
     | '<='
     | '=='
@@ -287,7 +287,7 @@ The `value` field is intentionally left as `any` to allow the user to query base
 
 The `QueryOptions<T>` has the following definition:
 ```ts
-export interface QueryOptions<T> {
+interface QueryOptions<T> {
   limit?:number,
   sort?:Array<Sort<T>>,
   startAfterId?:string,
@@ -313,11 +313,11 @@ Each `Sort<T>` object is a new sort that will be added together to be able to cr
 
 The `Sort<T>` object has the following definition:
 ```ts
-export interface Sort<T> {
+interface Sort<T> {
   field:Extract<keyof T, string>|string,
   order:SortOrder,
 }
-export enum SortOrder {
+enum SortOrder {
   ASC = 'asc',
   DESC = 'desc',
 }
